@@ -310,6 +310,9 @@ NS_ASSUME_NONNULL_END
   }
 
   NSError* error = nil;
+  if(file.temporaryPath.length <=0 ||absolutePath.length <=0 ) {
+    return [GCDWebServerErrorResponse responseWithServerError:kGCDWebServerHTTPStatusCode_InternalServerError underlyingError:error message:@"moving path is nil"];
+  }
   if (![[NSFileManager defaultManager] moveItemAtPath:file.temporaryPath toPath:absolutePath error:&error]) {
     return [GCDWebServerErrorResponse responseWithServerError:kGCDWebServerHTTPStatusCode_InternalServerError underlyingError:error message:@"Failed moving uploaded file to \"%@\"", relativePath];
   }
