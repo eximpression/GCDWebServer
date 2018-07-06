@@ -7,7 +7,7 @@
 
 Pod::Spec.new do |s|
   s.name     = 'ZCGCDWebServer'
-  s.version  = "3.4.2.1"
+  s.version  = "3.4.2.2"
   s.author   =  { 'Pierre-Olivier Latour' => 'info@pol-online.net' }
   s.license  = { :type => 'BSD', :file => 'LICENSE' }
   s.homepage = 'https://github.com/eximpression/GCDWebServer'
@@ -19,9 +19,9 @@ s.source   = { :git => "https://github.com/eximpression/GCDWebServer.git", :tag 
   s.osx.deployment_target = '10.7'
   s.requires_arc = true
   
-  s.default_subspec = 'ZCCore'
+  s.default_subspec = 'Core'
   
-  s.subspec 'ZCCore' do |cs|
+  s.subspec 'Core' do |cs|
     cs.source_files = 'GCDWebServer/**/*.{h,m}'
     cs.private_header_files = "GCDWebServer/Core/GCDWebServerPrivate.h"
     cs.requires_arc = true
@@ -33,8 +33,8 @@ s.source   = { :git => "https://github.com/eximpression/GCDWebServer.git", :tag 
     cs.osx.framework = 'SystemConfiguration'
   end
   
-  s.subspec 'ZCWebDAV' do |cs|
-    cs.dependency 'GCDWebServer/Core'
+  s.subspec 'WebDAV' do |cs|
+    cs.dependency 'ZCGCDWebServer/Core'
     cs.source_files = 'GCDWebDAVServer/*.{h,m}'
     cs.requires_arc = true
     cs.ios.library = 'xml2'
@@ -43,8 +43,8 @@ s.source   = { :git => "https://github.com/eximpression/GCDWebServer.git", :tag 
     cs.compiler_flags = '-I$(SDKROOT)/usr/include/libxml2'
   end
   
-  s.subspec 'ZCWebUploader' do |cs|
-    cs.dependency 'GCDWebServer/Core'
+  s.subspec 'WebUploader' do |cs|
+    cs.dependency 'ZCGCDWebServer/Core'
     cs.source_files = 'GCDWebUploader/*.{h,m}'
     cs.requires_arc = true
     cs.resource = "GCDWebUploader/GCDWebUploader.bundle"
