@@ -19,9 +19,9 @@ s.source   = { :git => "https://github.com/eximpression/GCDWebServer.git", :tag 
   s.osx.deployment_target = '10.7'
   s.requires_arc = true
   
-  s.default_subspec = 'Core'
+  s.default_subspec = 'ZCCore'
   
-  s.subspec 'Core' do |cs|
+  s.subspec 'ZCCore' do |cs|
     cs.source_files = 'GCDWebServer/**/*.{h,m}'
     cs.private_header_files = "GCDWebServer/Core/GCDWebServerPrivate.h"
     cs.requires_arc = true
@@ -33,7 +33,7 @@ s.source   = { :git => "https://github.com/eximpression/GCDWebServer.git", :tag 
     cs.osx.framework = 'SystemConfiguration'
   end
   
-  s.subspec 'WebDAV' do |cs|
+  s.subspec 'ZCWebDAV' do |cs|
     cs.dependency 'GCDWebServer/Core'
     cs.source_files = 'GCDWebDAVServer/*.{h,m}'
     cs.requires_arc = true
@@ -43,7 +43,7 @@ s.source   = { :git => "https://github.com/eximpression/GCDWebServer.git", :tag 
     cs.compiler_flags = '-I$(SDKROOT)/usr/include/libxml2'
   end
   
-  s.subspec 'WebUploader' do |cs|
+  s.subspec 'ZCWebUploader' do |cs|
     cs.dependency 'GCDWebServer/Core'
     cs.source_files = 'GCDWebUploader/*.{h,m}'
     cs.requires_arc = true
